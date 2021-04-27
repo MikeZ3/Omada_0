@@ -1,0 +1,50 @@
+1,Apricots - Halves,7.19,155
+2,Wine - Blue Nun Qualitatswein,13.33,60
+3,Mint - Fresh,17.23,92
+4,Beans - Kidney Canned,17.13,46
+5,Soup - Campbells Beef Barley,17.22,193
+6,Pork - Sausage Casing,15.39,169
+7,Wine - Niagara Peninsula Vqa,18.26,200
+8,Shrimp - Baby Cold Water,11.46,199
+9,Bread - Crusty Italian Poly,11.83,183
+10,Pork - Bacon back Peameal,6.64,191
+11,Mop Head - Cotton 24 Oz,7.50,89
+12,Lemonade - Strawberry 591 Ml,5.28,111
+13,Duck - Breast,11.63,181
+14,Wine - Harrow Estates Vidal,10.65,139
+15,Pan Grease,1.99,47
+16,Island Oasis - Banana Daiquiri,0.92,111
+17,Cheese - Cheddarsliced,17.75,196
+18,Puree - Blackcurrant,1.85,31
+19,Grapes - Black,18.22,156
+20,Pickles - Gherkins,11.50,142
+21,Bagel - Everything Presliced,13.88,151
+22,Chocolate - Sugar Free Semi Choc,9.84,169
+23,Tea - Herbal Orange Spice,10.09,200
+24,Cheese - Cheddar Old White,17.86,109
+25,Jam - Apricot,6.55,135
+26,Cheese - St. Paulin,4.87,86
+27,Wine - Chenin Blanc K.w.v.,0.42,182
+28,Star Fruit,8.32,177
+29,Tea - Mint,2.53,112
+30,Chips - Potato Jalapeno,16.85,80
+31,Wine - Red Oakridge Merlot,4.80,40
+32,Wakami Seaweed,9.12,164
+33,Wine - Magnotta - Belpaese,15.59,65
+34,Leeks - Baby White,8.48,171
+35,Beef - Tongue Cooked,16.88,159
+36,Vacuum Bags 12x16,19.31,37
+37,Lime Cordial - Roses,1.50,150
+38,Monkfish - Fresh,13.45,121
+39,Tea - Herbal Orange Spice,11.44,121
+40,Praline Paste,12.87,150
+41,Godiva White Chocolate,4.32,88
+42,Mace,12.38,138
+43,Chervil - Fresh,17.76,165
+44,Soupcontfoam16oz 116con,7.25,86
+45,Tomato Puree,4.53,83
+46,Juice - Pineapple 48 Oz,2.54,108
+47,Vinegar - Balsamic White,10.72,94
+48,Blackberries,9.61,108
+49,Pasta - Cappellini Dry,14.24,177
+50,Wine - Cabernet Sauvignon,9.36,125
