@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 
 public class Main {
 	
@@ -35,26 +36,23 @@ public class Main {
                     //Parse them as string or integer:
 					int id = Integer.parseInt( vals[0] );
 					String name = vals[1];
-					double price = Double.parseDouble( vals[2] );
+					double price_sold = Double.parseDouble( vals[2] );
 					int stock = Integer.parseInt( vals[3] );
+					double price_bought = (price_sold/1.15);
 					
-					Product p = new Product(id, name, price, stock); //Create a new object using those elements
+					Product p = new Product(id, name, price_sold, stock, price_bought); //Create a new object using those elements
 					allProducts.add(p); // Add the object to an ArrayList of all products
-					
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
+	
 		
 		
 }
