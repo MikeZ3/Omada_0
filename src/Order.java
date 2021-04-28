@@ -15,7 +15,7 @@ public class Order {
 		for(int aNId:id) {
 			for(Product aProduct: productsTable) {
 				if(aNId==aProduct.getId()) {
-					aProduct.setStock(aProduct.getStock()+amount[k]);
+					aProduct.setStock(aProduct.getStock()+amount[k]);  //Adjusting the stock after an order
 					k++;
 				}
 			}
@@ -23,6 +23,7 @@ public class Order {
 		
 	}
 	
+//	Calculates the charge of an order
 	public double getOrdersCharge() {
 		double charge=0;
 		int k=0;
@@ -36,6 +37,8 @@ public class Order {
 		}
 		return charge;
 	}
+	
+//	Calculates total charge for allOrders
 	public double getTotalCharge() {
 		double totalcharge=0;
 		for (Order anOrder:allOrders) {
