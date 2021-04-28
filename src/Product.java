@@ -7,7 +7,7 @@ public class Product {
 	private String name;
 	private double price_sold; // per piece 
 	private int stock;
-	private double price_bought; // for all the pieces   => stock*price_sold/0.015
+	private double price_bought; // for all the pieces
 	
 	
 	public Product(int anId, String aName, double aPrice, int Stock, double price_Bought) {
