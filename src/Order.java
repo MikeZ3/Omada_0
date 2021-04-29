@@ -1,51 +1,56 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Order {
-	
-	private int id[];
-	private int amount[];
-	private Product productsTable[];
-	public static ArrayList<Order> allOrders=new ArrayList<Order>();
-	
-	public Order(int anId[], int anAmount[], Product productsTable[]) {
-		this.id=anId;
-		this.amount=anAmount;
-		this.productsTable=productsTable;
-		allOrders.add(this);
-		int k=0;
-		for(int aNId:id) {
-			for(Product aProduct: productsTable) {
-				if(aNId==aProduct.getId()) {
-					aProduct.setStock(aProduct.getStock()+amount[k]);  //Adjusting the stock after an order
-					k++;
-				}
+
+	private int id;
+	private HashMap<Product, Integer> items;
+	private static ArrayList<Order> orders = new ArrayList<>();
+
+	public Order(HashMap<Product, Integer> items) {
+		this.items = items;
+		for(Map.Entry<Product, Integer> item: items.entrySet()) {
+			Product product = item.getKey();
+			int quantinty = item.getValue();
+			if(product.getStock() >= quantinty) {
+				product.setStock(product.getStock() - quantinty);
+				this.id = orders.size() + 1;
+				orders.add(this);
+			} else {
+				System.out.println("Not Enough Stock to get Product " + product.getName());
+				System.out.println("Current Stock: " + product.getStock());
+				System.out.println("Order was not made");
 			}
 		}
-		
 	}
-	
-//	Calculates the charge of an order
-	public double getOrdersCharge() {
-		double charge=0;
-		int k=0;
-		for(int anId:id) {
-			for(Product aProduct: productsTable) {
-				if(anId==aProduct.getId()) {
-					charge+=(aProduct.getPriceBought()*amount[k]);
-					k++;
-				}
+
+	// Get Total Number of Orders
+	public static int totalNumberOfOrders() {
+		return orders.size();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	// Calculates the charge of an order
+	public double getOrderCharge() {
+		double charge = 0;
+		for(Map.Entry<Product, Integer> item: items.entrySet()) {
+			charge += item.getKey().getPriceSold()*item.getValue();
+		}
+		return charge;
+	}
+
+	// Calculates total charge for All Orders
+	public static double getTotalCharge() {
+		double charge = 0;
+		for(Order order: orders) {
+			for(Map.Entry<Product, Integer> item: order.items.entrySet()) {
+				charge += item.getKey().getPriceSold()*item.getValue();
 			}
 		}
 		return charge;
 	}
-	
-//	Calculates total charge for allOrders
-	public double getTotalCharge() {
-		double totalcharge=0;
-		for (Order anOrder:allOrders) {
-			totalcharge+=anOrder.getOrdersCharge();
-		}
-		return totalcharge;
-	}
-	
 }
-

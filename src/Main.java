@@ -1,58 +1,49 @@
-import java.util.*;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.FileNotFoundException;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
-	
-	
-	public static ArrayList<Product> allProducts;
-
 	public static void main(String[] args) {
-		
-		allProducts = new ArrayList<Product>();
-		
+		ArrayList<Product> products = getProductsFromJSON();
+		// Order Example
+		HashMap<Product, Integer> items = new HashMap<>();
+		items.put(products.get(0), 2);
+		items.put(products.get(1), 1);
+		Order order1 = new Order(items);
+		System.out.println(order1.getOrderCharge());
+
+	}
+
+	private static ArrayList<Product> getProductsFromJSON() {
+
+		ArrayList<Product> products = new ArrayList<>();
+		JSONParser jsonParser = new JSONParser();
 		try {
-			BufferedReader in = new BufferedReader (new FileReader("DATA.txt"));
-			allProducts.clear();
-			String line;
-			try {
-				while ( (line = in.readLine()) != null) {
-					
-					String[] vals = line.split(","); //Split the line at the commas, so I have 4 elements 
-					
-                    //Parse them as string or integer:
-					int id = Integer.parseInt( vals[0] );
-					String name = vals[1];
-					double price_sold = Double.parseDouble( vals[2] );
-					int stock = Integer.parseInt( vals[3] );
-					double price_bought = (price_sold/1.15);
-					
-					Product p = new Product(id, name, price_sold, stock, price_bought); //Create a new object using those elements
-					allProducts.add(p); // Add the object to an ArrayList of all products
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			JSONArray jsonArray = (JSONArray) jsonParser.parse(new FileReader("products.json"));
+			for (Object o : jsonArray) {
+				JSONObject product = (JSONObject) o;
+				int id = ((Long) product.get("id")).intValue();
+				String name = (String) product.get("name");
+				double price = (double) product.get("price");
+				String category = (String) product.get("category");
+				int stock = ((Long) product.get("stock")).intValue();
+
+				products.add(new Product(id, name, price, category, stock));
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {
+			System.out.println("Cannot Find products.json");
+			e.printStackTrace();
+		} catch (ParseException e) {
+			System.out.println("Error in products.json");
 			e.printStackTrace();
 		}
+
+		return products;
 	}
-	
-		
-		
 }
