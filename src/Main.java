@@ -10,11 +10,11 @@ import java.util.HashMap;
 
 public class Main {
 	public static void main(String[] args) {
-		ArrayList<Product> products = getProductsFromJSON();
+		Product.setProducts(getProductsFromJSON());
 		// Order Example
 		HashMap<Product, Integer> items = new HashMap<>();
-		items.put(products.get(0), 2);
-		items.put(products.get(1), 1);
+		items.put(Product.getProducts().get(0), 2);
+		items.put(Product.getProducts().get(1), 1);
 		Order order1 = new Order(items);
 		System.out.println(order1.getOrderCharge());
 

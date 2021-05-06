@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Product {
 
@@ -9,6 +10,8 @@ public class Product {
 	private int stock;
 	private double price_bought; // for all the pieces
 
+	private static ArrayList<Product> products = new ArrayList<>();
+
 
 	public Product(int id, String name, double price_sold, String category, int stock) {
 		this.id = id;
@@ -17,6 +20,18 @@ public class Product {
 		this.category = category;
 		this.stock = stock;
 		this.price_bought= DecimalUtils.round((price_sold/1.15),2);
+	}
+
+	public void addProduct(Product product) {
+		products.add(product);
+	}
+
+	public static ArrayList<Product> getProducts() {
+		return products;
+	}
+
+	public static void setProducts(ArrayList<Product> products) {
+		Product.products = products;
 	}
 
 	public double getPriceBought() {
