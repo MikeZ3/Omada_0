@@ -1,85 +1,83 @@
-import java.util.ArrayList;
-
 public class Product {
 
-
-	private int id;
-	private String name;
-	private double price_sold; // per piece
-	private String category;
-	private int stock;
-	private double price_bought; // for all the pieces
-
-	private static ArrayList<Product> products = new ArrayList<>();
+    private int id;
+    private String name;
+    private double price_sold; // per piece
+    private double price_bought; // for all the pieces
+    private String category;
+    private int stock;
+    private int selves;
 
 
-	public Product(int id, String name, double price_sold, String category, int stock) {
-		this.id = id;
-		this.name = name;
-		this.price_sold = DecimalUtils.round(price_sold,2);
-		this.category = category;
-		this.stock = stock;
-		this.price_bought= DecimalUtils.round((price_sold/1.15),2);
-	}
+    public Product(int id, String name, double price_sold, double price_bought, String category, int stock, int selves) {
+        this.id = id;
+        this.name = name;
+        this.price_sold = DecimalUtils.round(price_sold,2);
+        this.price_bought= DecimalUtils.round((price_sold/1.15),2);
+        this.category = category;
+        this.stock = stock;
+        this.selves = selves;
+    }
 
-	public void addProduct(Product product) {
-		products.add(product);
-	}
+    @Override
+    public boolean equals(Object o) {
+        return this.id == ((Product) o).id;
+    }
 
-	public static ArrayList<Product> getProducts() {
-		return products;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public static void setProducts(ArrayList<Product> products) {
-		Product.products = products;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public double getPriceBought() {
-		return price_bought;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPriceBought(double price_bought) {
-		this.price_bought = price_bought;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public double getPrice_sold() {
+        return price_sold;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setPrice_sold(double price) {
+        this.price_sold = price;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public double getPrice_bought() {
+        return price_bought;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setPrice_bought(double price_bought) {
+        this.price_bought = price_bought;
+    }
 
-	public double getPriceSold() {
-		return price_sold;
-	}
+    public String getCategory() {
+        return category;
+    }
 
-	public void setPriceSold(double price) {
-		this.price_sold = price;
-	}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public int getStock() {
+        return stock;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 
-	public int getStock() {
-		return stock;
-	}
+    public int getSelves() {
+        return selves;
+    }
 
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
+    public void setSelves(int selves) {
+        this.selves = selves;
+    }
 }
 

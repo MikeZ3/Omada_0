@@ -38,7 +38,7 @@ public class Order {
 	public double getOrderCharge() {
 		double charge = 0;
 		for(Map.Entry<Product, Integer> item: items.entrySet()) {
-			charge += item.getKey().getPriceSold()*item.getValue();
+			charge += item.getKey().getPrice_sold()*item.getValue();
 		}
 		return charge;
 	}
@@ -48,7 +48,7 @@ public class Order {
 		double charge = 0;
 		for(Order order: orders) {
 			for(Map.Entry<Product, Integer> item: order.items.entrySet()) {
-				charge += item.getKey().getPriceSold()*item.getValue();
+				charge += item.getKey().getPrice_sold()*item.getValue();
 			}
 		}
 		return charge;
