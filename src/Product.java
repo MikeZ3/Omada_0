@@ -13,7 +13,7 @@ public class Product {
         this.id = id;
         this.name = name;
         this.price_sold = DecimalUtils.round(price_sold,2);
-        this.price_bought= DecimalUtils.round((price_sold/1.15),2);
+        this.price_bought= DecimalUtils.round(price_bought,2);
         this.category = category;
         this.stock = stock;
         this.selves = selves;

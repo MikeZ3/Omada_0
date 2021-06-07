@@ -6,49 +6,49 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane minHeight="800.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainViewController">
-   <Button fx:id="viewProductsButton" alignment="CENTER" contentDisplay="CENTER" layoutY="80.0" onAction="#viewProducts" prefHeight="89.0" text="View Products" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Button fx:id="viewProductsButton" alignment="CENTER" contentDisplay="CENTER" layoutY="80.0" onAction="#viewProducts" prefHeight="89.0" text="Προβολή Προϊόντων" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="18.0" />
+         <Font name="Arial" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="viewOrderButton" alignment="CENTER" contentDisplay="CENTER" layoutY="170.0" onAction="#viewOrder" prefHeight="89.0" text="Order" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Button fx:id="viewOrderButton" alignment="CENTER" contentDisplay="CENTER" layoutY="170.0" onAction="#viewOrder" prefHeight="89.0" text="Πώληση" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="18.0" />
+         <Font name="Arial" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="viewSupplyStoreButton" alignment="CENTER" contentDisplay="CENTER" layoutY="350.0" onAction="#viewSupplyStore" prefHeight="89.0" text="Supply Store" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Button fx:id="viewSupplyStoreButton" alignment="CENTER" contentDisplay="CENTER" layoutY="350.0" onAction="#viewSupplyStore" prefHeight="89.0" text="Εφοδιασμός" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="18.0" />
+         <Font name="Arial" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="viewAddProductButton" alignment="CENTER" contentDisplay="CENTER" layoutY="440.0" onAction="#viewAddProduct" prefHeight="89.0" text="Add Product" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Button fx:id="viewAddProductButton" alignment="CENTER" contentDisplay="CENTER" layoutY="440.0" onAction="#viewAddProduct" prefHeight="89.0" text="Προσθήκη Προϊόντος" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="18.0" />
+         <Font name="Arial" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="viewCheckOrderButton" alignment="CENTER" contentDisplay="CENTER" layoutY="530.0" onAction="#viewCheckOrder" prefHeight="89.0" text="Check Order" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Button fx:id="viewCheckOrderButton" alignment="CENTER" contentDisplay="CENTER" layoutY="530.0" onAction="#viewCheckOrder" prefHeight="89.0" text="Έλεγχος Παραγγελίας" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="18.0" />
+         <Font name="Arial" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="viewSupplyStockButton" alignment="CENTER" layoutY="620.0" onAction="#viewSupplyStock" prefHeight="89.0" text="Supply Stock" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Button fx:id="viewSupplyStockButton" alignment="CENTER" layoutY="620.0" onAction="#viewSupplyStock" prefHeight="89.0" text="Εφοδιασμός Αποθήκης" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="18.0" />
+         <Font name="Arial" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="viewEarningsExpensesButton" alignment="CENTER" contentDisplay="CENTER" layoutY="710.0" onAction="#viewEarningsExpenses" prefHeight="89.0" prefWidth="1003.0" text="Earnings - Expenses" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Button fx:id="viewEarningsExpensesButton" alignment="CENTER" contentDisplay="CENTER" layoutY="710.0" onAction="#viewEarningsExpenses" prefHeight="89.0" prefWidth="1003.0" text="Έσοδα - Έξοδα" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="18.0" />
+         <Font name="Arial" size="18.0" />
       </font>
    </Button>
-   <Button fx:id="viewReturnButton" alignment="CENTER" contentDisplay="CENTER" layoutY="260.0" onAction="#viewReturn" prefHeight="89.0" text="Return" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Button fx:id="viewReturnButton" alignment="CENTER" contentDisplay="CENTER" layoutY="260.0" onAction="#viewReturn" prefHeight="89.0" text="Επιστροφή" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="18.0" />
+         <Font name="Arial" size="18.0" />
       </font>
    </Button>
-   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" prefHeight="80.0" prefWidth="1003.0" text="Main" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="488.0" prefHeight="80.0" prefWidth="1003.0" text="Αρχική" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <font>
-         <Font name="Quicksand Regular" size="30.0" />
+         <Font name="Arial" size="30.0" />
       </font>
    </Label>
 </AnchorPane>

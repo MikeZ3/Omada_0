@@ -1,15 +1,22 @@
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class MainViewController {
+public class MainViewController implements Initializable {
 
+    private Stage stage;
     private ArrayList<Product> productsArrayList;
 
     @FXML
@@ -30,10 +37,13 @@ public class MainViewController {
     private Button viewEarningsExpensesButton;
 
 
-    // Set Arguments
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    public void setProductsArrayList(ArrayList<Product> productsArrayList) {
-        this.productsArrayList = productsArrayList;
+
+        productsArrayList = Main.getProductsFromJSON();
+
+
     }
 
 

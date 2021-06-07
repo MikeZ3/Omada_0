@@ -40,17 +40,13 @@ public class ProductsViewController implements Initializable {
     @FXML
     private Button backButton;
     @FXML
-    private TextField seacrhTextField;
+    private TextField searchTextField;
     @FXML
     private ChoiceBox<String> choiceBox;
 
 
     // Set Arguments
 
-
-    public ArrayList<Product> getProductsArrayList() {
-        return productsArrayList;
-    }
 
     public void setProductsArrayList(ArrayList<Product> productsArrayList) {
         this.productsArrayList = productsArrayList;
@@ -82,7 +78,7 @@ public class ProductsViewController implements Initializable {
 
             FilteredList<Product> filteredProducts = new FilteredList<>(productObservableList, b->true);
 
-            seacrhTextField.textProperty().addListener((observable, oldValue, newValue) -> filteredProducts.setPredicate(product -> {
+            searchTextField.textProperty().addListener((observable, oldValue, newValue) -> filteredProducts.setPredicate(product -> {
 
 
                 // If filter text is empty, display all products.

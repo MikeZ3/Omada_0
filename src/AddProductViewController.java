@@ -14,8 +14,6 @@ public class AddProductViewController {
     @FXML
     private Button backButton;
     @FXML
-    private TextField idTextField;
-    @FXML
     private TextField nameTextField;
     @FXML
     private TextField price_SoldTextField;
@@ -42,7 +40,7 @@ public class AddProductViewController {
         if(!nameTextField.getText().isEmpty() && !price_SoldTextField.getText().isEmpty() && !price_BoughtTextField.getText().isEmpty()
         && !categoryTextField.getText().isEmpty() && !stockTextField.getText().isEmpty() && !selvesTextField.getText().isEmpty()) {
 
-            int id = Integer.parseInt(idTextField.getText());
+            int id = productsArrayList.get(productsArrayList.size() - 1).getId() + 1;
             String name = nameTextField.getText();
             double price_sold = Double.parseDouble(price_SoldTextField.getText());
             double price_bought = Double.parseDouble(price_BoughtTextField.getText());
@@ -52,12 +50,11 @@ public class AddProductViewController {
 
             Product product = new Product(id, name, price_sold, price_bought, category, stock, selves);
 
-            if(!productsArrayList.contains(product)) {
-                productsArrayList.add(product);
-                System.out.println("Product Successfully Created");
-            } else {
-                System.out.println("A Product with the same id already exist please try again");
-            }
+            productsArrayList.add(product);
+
+
+            System.out.println("Product Successfully Created");
+
         } else {
 
         }

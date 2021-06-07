@@ -23,14 +23,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
-        Parent mainViewParent = fxmlLoader.load();
-        MainViewController controller = fxmlLoader.getController();
+        Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 
-        controller.setProductsArrayList(getProductsFromJSON());
 
         stage.setTitle("Store");
-        stage.setScene(new Scene(mainViewParent));
+        stage.setScene(new Scene(root));
 
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         stage.setWidth(bounds.getWidth());
@@ -39,7 +36,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    private static ArrayList<Product> getProductsFromJSON() {
+    public static ArrayList<Product> getProductsFromJSON() {
 
         ArrayList<Product> products = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
@@ -49,13 +46,13 @@ public class Main extends Application {
                 JSONObject product = (JSONObject) o;
                 int id = ((Long) product.get("id")).intValue();
                 String name = (String) product.get("name");
-                double price = (double) product.get("price");
-                double price_bought = 0;
+                double price_sold = (double) product.get("price_sold");
+                double price_bought = (double) product.get("price_bought");
                 String category = (String) product.get("category");
                 int stock = ((Long) product.get("stock")).intValue();
                 int selves = ((Long) product.get("selves")).intValue();
 
-                products.add(new Product(id, name, price, price_bought, category, stock, selves));
+                products.add(new Product(id, name, price_sold, price_bought, category, stock, selves));
             }
         } catch (IOException e) {
             System.out.println("Cannot Find products.json");
