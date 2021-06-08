@@ -1,22 +1,18 @@
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-    private Stage stage;
     private ArrayList<Product> productsArrayList;
 
     @FXML
@@ -40,8 +36,26 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        try {
+            File file = new File("products.ser");
+            if(!file.exists()) {
+                productsArrayList = Main.getProductsFromJSON();
+                FileOutputStream fileOutputStream = new FileOutputStream("products.ser");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                objectOutputStream.writeObject(productsArrayList);
+                objectOutputStream.close();
+                fileOutputStream.close();
+            } else {
+                FileInputStream fileInputStream = new FileInputStream("products.ser");
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                productsArrayList = (ArrayList<Product>) objectInputStream.readObject();
+                objectInputStream.close();
+                fileInputStream.close();
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        productsArrayList = Main.getProductsFromJSON();
 
 
     }
