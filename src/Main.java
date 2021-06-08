@@ -1,9 +1,7 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -29,9 +27,6 @@ public class Main extends Application {
         stage.setTitle("Store");
         stage.setScene(new Scene(root));
 
-        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-        stage.setWidth(bounds.getWidth());
-        stage.setHeight(bounds.getHeight());
         stage.setMaximized(true);
         stage.show();
     }

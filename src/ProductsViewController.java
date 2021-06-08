@@ -135,7 +135,7 @@ public class ProductsViewController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 
         Stage primaryStage = (Stage) backButton.getScene().getWindow();
-        primaryStage.setScene(new Scene(root));
+        primaryStage.getScene().setRoot(root);
     }
 
 

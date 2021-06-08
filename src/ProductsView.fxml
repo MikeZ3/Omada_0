@@ -12,7 +12,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0"
             xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ProductsViewController">
-    <TableView fx:id="tableView" layoutY="45.0" prefHeight="748.0" prefWidth="800.0" AnchorPane.bottomAnchor="7.0"
+    <TableView fx:id="tableView" layoutY="45.0" AnchorPane.bottomAnchor="7.0"
                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0"
                BorderPane.alignment="CENTER">
         <columns>

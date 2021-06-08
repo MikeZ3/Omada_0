@@ -2,10 +2,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -55,8 +57,14 @@ public class AddProductViewController {
 
             System.out.println("Product Successfully Created");
 
-        } else {
 
+
+
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Error");
+            errorAlert.setContentText("Παρακαλώ συμπληρώστε όλα τα πεδία");
+            errorAlert.showAndWait();
         }
 
 
@@ -66,6 +74,6 @@ public class AddProductViewController {
         Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 
         Stage primaryStage = (Stage) backButton.getScene().getWindow();
-        primaryStage.setScene(new Scene(root));
+        primaryStage.getScene().setRoot(root);
     }
 }

@@ -101,13 +101,13 @@ public class MainViewController implements Initializable {
 
     private Object gotToView(Button button, String fxml) throws IOException {
 
-        // Switch to given FXML and returns the Controller
+        // Switch to given FXML and return the Controller
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml));
         Parent viewParent = fxmlLoader.load();
         Stage stage = (Stage) button.getScene().getWindow();
 
-        stage.setScene(new Scene(viewParent));
+        stage.getScene().setRoot(viewParent);
         return fxmlLoader.getController();
     }
 }
