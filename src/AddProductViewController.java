@@ -1,14 +1,12 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class AddProductViewController {
@@ -44,25 +42,53 @@ public class AddProductViewController {
 
             int id = productsArrayList.get(productsArrayList.size() - 1).getId() + 1;
             String name = nameTextField.getText();
-            double price_sold = Double.parseDouble(price_SoldTextField.getText());
-            double price_bought = Double.parseDouble(price_BoughtTextField.getText());
             String category = categoryTextField.getText();
-            int stock = Integer.parseInt(stockTextField.getText());
-            int selves = Integer.parseInt(selvesTextField.getText());
+            try {
+                double price_sold = Double.parseDouble(price_SoldTextField.getText());
+                double price_bought = Double.parseDouble(price_BoughtTextField.getText());
+                int stock = Integer.parseInt(stockTextField.getText());
+                int selves = Integer.parseInt(selvesTextField.getText());
+                Product product = new Product(id, name, price_sold, price_bought, category, stock, selves);
+                productsArrayList.add(product);
 
-            Product product = new Product(id, name, price_sold, price_bought, category, stock, selves);
+                FileOutputStream fileOutputStream = new FileOutputStream("products.ser");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                objectOutputStream.writeObject(productsArrayList);
+                objectOutputStream.close();
+                fileOutputStream.close();
 
-            productsArrayList.add(product);
+                System.out.println("Product Successfully Created");
+
+                Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+                infoAlert.setHeaderText("Το προϊόν προστέθηκε");
+                infoAlert.showAndWait();
+                nameTextField.setText("");
+                price_SoldTextField.setText("");
+                price_BoughtTextField.setText("");
+                categoryTextField.setText("");
+                stockTextField.setText("");
+                selvesTextField.setText("");
+            }
+            catch (NumberFormatException e) {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setHeaderText("Σφάλμα");
+                errorAlert.setContentText("Ελέγξτε ότι τα παιδία είναι συμπληρωμένα σωστά");
+                errorAlert.showAndWait();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
 
-            System.out.println("Product Successfully Created");
+
 
 
 
 
         } else {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText("Error");
+            errorAlert.setHeaderText("Σφάλμα");
             errorAlert.setContentText("Παρακαλώ συμπληρώστε όλα τα πεδία");
             errorAlert.showAndWait();
         }
