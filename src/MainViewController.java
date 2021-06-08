@@ -63,6 +63,7 @@ public class MainViewController implements Initializable {
 
     public void viewOrder() throws IOException {
         OrderViewController controller = (OrderViewController) gotToView(viewOrderButton, "OrderView.fxml");
+        controller.setProductsArrayList(productsArrayList);
     }
 
     public void viewReturn() throws IOException {

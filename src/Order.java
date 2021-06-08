@@ -8,6 +8,10 @@ public class Order {
 	private HashMap<Product, Integer> items;
 	private static ArrayList<Order> orders = new ArrayList<>();
 
+	public static ArrayList<Order> getOrders() {
+		return orders;
+	}
+
 	public Order(HashMap<Product, Integer> items) {
 		this.items = items;
 		for(Map.Entry<Product, Integer> item: items.entrySet()) {
