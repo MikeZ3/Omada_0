@@ -8,8 +8,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -21,8 +20,16 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
+        File file = new File("products.ser");
+        if(!file.exists()) {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(getProductsFromJSON());
+            objectOutputStream.close();
+            fileOutputStream.close();
+        }
 
+        Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 
         stage.setTitle("Store");
         stage.setScene(new Scene(root));
