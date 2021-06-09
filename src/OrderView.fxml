@@ -30,7 +30,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="425.0">
          <children>
-            <Label layoutX="199.0" layoutY="14.0" text="Καλάθι" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+            <Label layoutX="199.0" layoutY="14.0" prefHeight="36.0" prefWidth="102.0" text="Καλάθι" AnchorPane.leftAnchor="20.0">
                <font>
                   <Font name="Arial" size="30.0" />
                </font>
@@ -59,6 +59,7 @@
                   <Font name="Arial" size="25.0" />
                </font>
             </Label>
+            <Button layoutX="463.0" layoutY="19.0" mnemonicParsing="false" onAction="#clearBasket" text="Καθαρισμός" AnchorPane.rightAnchor="20.0" />
          </children>
       </AnchorPane>
   </items>

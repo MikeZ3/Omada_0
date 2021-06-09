@@ -160,12 +160,9 @@ public class OrderViewController implements Initializable {
     private void addToBasket(Product product) {
         BasketTableItem basketTableItem = new BasketTableItem(product);
 
-        if(basketTableItems.contains(basketTableItem)) {
-            for(BasketTableItem b: basketTableItems) {
-                if(b.getId() == basketTableItem.getId()) {
-                    b.getSpinner().getValueFactory().setValue(b.getSpinner().getValue() + 1);
-                }
-            }
+        int index = basketTableItems.indexOf(basketTableItem);
+        if(index != -1) {
+            basketTableItems.get(index).getSpinner().getValueFactory().setValue(basketTableItems.get(index).getSpinner().getValue() + 1);
         } else {
             basketTableItem.getButton().setOnAction(e -> removeFromBasket(basketTableItem));
             basketTableItem.getSpinner().valueProperty().addListener((obs, oldValue, newValue) -> {
@@ -186,6 +183,11 @@ public class OrderViewController implements Initializable {
         basketTableItems.remove(basketTableItem);
 
         totalPriceLabel.setText(String.valueOf(DecimalUtils.round(Double.parseDouble(totalPriceLabel.getText()) - basketTableItem.getSpinner().getValue() * basketTableItem.getPrice(), 2)));
+    }
+
+    public void clearBasket() {
+        basketTableItems.clear();
+        totalPriceLabel.setText("0");
     }
 
 
