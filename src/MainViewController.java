@@ -72,6 +72,7 @@ public class MainViewController implements Initializable {
 
     public void viewSupplyStore() throws IOException {
         SupplyStoreViewController controller = (SupplyStoreViewController) gotToView(viewSupplyStoreButton, "SupplyStoreView.fxml");
+        controller.setProductsArrayList(productsArrayList);
     }
 
     public void viewAddProduct() throws IOException {

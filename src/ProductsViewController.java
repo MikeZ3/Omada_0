@@ -109,6 +109,8 @@ public class ProductsViewController implements Initializable {
                         else if (product.getName().toLowerCase().contains(lowerCaseFilter)) return true;
                         else if (String.valueOf(product.getPrice_sold()).startsWith(newValue)) return true;
                         else if (String.valueOf(product.getPrice_bought()).startsWith(newValue)) return true;
+                        else if (String.valueOf(product.getStock()).startsWith(newValue)) return true;
+                        else if (String.valueOf(product.getSelves()).startsWith(newValue)) return true;
                         else return product.getCategory().toLowerCase().contains(lowerCaseFilter);
                 }
 

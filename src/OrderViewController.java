@@ -125,7 +125,6 @@ public class OrderViewController implements Initializable {
                         if (String.valueOf(product.getId()).startsWith(newValue)) return true;
                         else if (product.getName().toLowerCase().contains(lowerCaseFilter)) return true;
                         else if (String.valueOf(product.getPrice_sold()).startsWith(newValue)) return true;
-                        else if (String.valueOf(product.getPrice_bought()).startsWith(newValue)) return true;
                         else return product.getCategory().toLowerCase().contains(lowerCaseFilter);
                 }
 
@@ -232,6 +231,11 @@ public class OrderViewController implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Σφάλμα");
+            errorAlert.setContentText("Οι αλλαγές δεν αποθηκέυτηκαν");
+            errorAlert.showAndWait();
+            e.printStackTrace();
             e.printStackTrace();
         }
 

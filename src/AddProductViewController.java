@@ -77,6 +77,11 @@ public class AddProductViewController {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setHeaderText("Σφάλμα");
+                errorAlert.setContentText("Οι αλλαγές δεν αποθηκέυτηκαν");
+                errorAlert.showAndWait();
+                e.printStackTrace();
                 e.printStackTrace();
             }
 
