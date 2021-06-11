@@ -62,12 +62,14 @@ public class MainViewController implements Initializable {
     }
 
     public void viewOrder() throws IOException {
-        OrderViewController controller = (OrderViewController) gotToView(viewOrderButton, "OrderView.fxml");
+        OrderReturnViewController controller = (OrderReturnViewController) gotToView(viewOrderButton, "OrderView.fxml");
         controller.setProductsArrayList(productsArrayList);
     }
 
     public void viewReturn() throws IOException {
-        ReturnViewController controller = (ReturnViewController) gotToView(viewReturnButton, "ReturnView.fxml");
+        OrderReturnViewController controller = (OrderReturnViewController) gotToView(viewReturnButton, "ReturnView.fxml");
+        controller.setProductsArrayList(productsArrayList);
+        controller.setReturn();
     }
 
     public void viewSupplyStore() throws IOException {

@@ -21,7 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-public class OrderViewController implements Initializable {
+public class OrderReturnViewController implements Initializable {
+
+    private boolean isReturn = false;
 
     private ArrayList<Product> productsArrayList;
 
@@ -61,6 +63,10 @@ public class OrderViewController implements Initializable {
     @FXML
     private Label totalPriceLabel;
 
+
+    public void setReturn() {
+        isReturn = true;
+    }
 
     public void setProductsArrayList(ArrayList<Product> productsArrayList) {
         this.productsArrayList = productsArrayList;
@@ -201,20 +207,29 @@ public class OrderViewController implements Initializable {
         }
 
         for(BasketTableItem basketTableItem : basketTableItems) {
-            //Check if there are enough
-            if(basketTableItem.getProduct().getStock() > basketTableItem.getSpinner().getValue()) {
-                items.put(basketTableItem.getProduct(), basketTableItem.getSpinner().getValue());
+
+            if(!isReturn) {
+                //Check if there are enough
+                if (basketTableItem.getProduct().getStock() > basketTableItem.getSpinner().getValue()) {
+                    items.put(basketTableItem.getProduct(), basketTableItem.getSpinner().getValue());
+                } else {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setHeaderText("Δεν υπάρχει αρκετή ποσότητα");
+                    errorAlert.setContentText("Προϊόν: \n" + basketTableItem.getProduct().getName()
+                            + "\n Συνολική διαθέσιμη ποσότητα: " + basketTableItem.getProduct().getStock() + "\nΗ παραγγελεία δεν ολοκληρώθηκε");
+                    errorAlert.showAndWait();
+                    return;
+                }
             } else {
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.setHeaderText("Δεν υπάρχει αρκετή ποσότητα");
-                errorAlert.setContentText("Προϊόν: \n" + basketTableItem.getProduct().getName()
-                        + "\n Συνολική διαθέσιμη ποσότητα: " + basketTableItem.getProduct().getStock() + "\nΗ παραγγελεία δεν ολοκληρώθηκε");
-                errorAlert.showAndWait();
-                return;
+                items.put(basketTableItem.getProduct(), basketTableItem.getSpinner().getValue());
             }
         }
+        if(!isReturn) {
+            Order.addOrder(new Order(items));
+        } else {
+            Return.addReturn(new Return(items));
+        }
 
-        Order.getOrders().add(new Order(items));
 
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("products.ser");
@@ -224,7 +239,11 @@ public class OrderViewController implements Initializable {
             fileOutputStream.close();
 
             Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
-            infoAlert.setHeaderText("Η παραγγελία ολοκληρώθηκε");
+            if(!isReturn) {
+                infoAlert.setHeaderText("Η παραγγελία ολοκληρώθηκε");
+            } else {
+                infoAlert.setHeaderText("Η επιστροφή ολοκληρώθηκε");
+            }
             infoAlert.showAndWait();
             basketTableItems.clear();
             totalPriceLabel.setText("0");
