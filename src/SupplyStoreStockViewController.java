@@ -192,6 +192,13 @@ public class SupplyStoreStockViewController implements Initializable {
 
     public void completeSupply() {
 
+        if(supplyTableItems.isEmpty()) {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setHeaderText("Παρακαλώ εισάγετε προϊόντα");
+            errorAlert.showAndWait();
+            return;
+        }
+
         for(SupplyTableItem supplyTableItem: supplyTableItems) {
             try {
                 Integer.parseInt(supplyTableItem.getTextField().getText());
@@ -235,7 +242,6 @@ public class SupplyStoreStockViewController implements Initializable {
                 items.put(supplyTableItem.getProduct(), Integer.parseInt(supplyTableItem.getTextField().getText()));
             }
             purchase = new Purchase(items);
-            Purchase.addPurchase(purchase);
         }
 
         try {

@@ -225,9 +225,9 @@ public class OrderReturnViewController implements Initializable {
             }
         }
         if(!isReturn) {
-            Order.addOrder(new Order(items));
+            new Order(items);
         } else {
-            Return.addReturn(new Return(items));
+            new Return(items);
         }
 
 

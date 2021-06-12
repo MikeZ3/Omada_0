@@ -8,10 +8,6 @@ public class Purchase {
     private HashMap<Product, Integer> items;
     private static ArrayList<Purchase> purchases = new ArrayList<>();
 
-    public static void addPurchase(Purchase purchase) {
-        purchases.add(purchase);
-    }
-
     public Purchase(HashMap<Product, Integer> items) {
         this.items = items;
         for(Map.Entry<Product, Integer> item: items.entrySet()) {

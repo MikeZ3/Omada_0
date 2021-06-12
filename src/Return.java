@@ -8,9 +8,6 @@ public class Return {
     private HashMap<Product, Integer> items;
     private static ArrayList<Return> returns = new ArrayList<>();
 
-    public static void addReturn(Return r) {
-        returns.add(r);
-    }
 
     public Return(HashMap<Product, Integer> items) {
         this.items = items;
