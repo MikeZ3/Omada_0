@@ -64,8 +64,8 @@ public class OrderReturnViewController implements Initializable {
     private Label totalPriceLabel;
 
 
-    public void setReturn() {
-        isReturn = true;
+    public void setReturn(boolean b) {
+        isReturn = b;
     }
 
     public void setProductsArrayList(ArrayList<Product> productsArrayList) {

@@ -69,11 +69,11 @@ public class MainViewController implements Initializable {
     public void viewReturn() throws IOException {
         OrderReturnViewController controller = (OrderReturnViewController) gotToView(viewReturnButton, "ReturnView.fxml");
         controller.setProductsArrayList(productsArrayList);
-        controller.setReturn();
+        controller.setReturn(true);
     }
 
     public void viewSupplyStore() throws IOException {
-        SupplyStoreViewController controller = (SupplyStoreViewController) gotToView(viewSupplyStoreButton, "SupplyStoreView.fxml");
+        SupplyStoreStockViewController controller = (SupplyStoreStockViewController) gotToView(viewSupplyStoreButton, "SupplyStoreView.fxml");
         controller.setProductsArrayList(productsArrayList);
     }
 
@@ -87,7 +87,9 @@ public class MainViewController implements Initializable {
     }
 
     public void viewSupplyStock() throws IOException {
-        SupplyStockViewController controller = (SupplyStockViewController) gotToView(viewSupplyStockButton, "SupplyStockView.fxml");
+        SupplyStoreStockViewController controller = (SupplyStoreStockViewController) gotToView(viewSupplyStockButton, "SupplyStockView.fxml");
+        controller.setProductsArrayList(productsArrayList);
+        controller.setSupplyStock(true);
     }
 
     public void viewEarningsExpenses() throws IOException {

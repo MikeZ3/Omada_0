@@ -18,11 +18,16 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
-public class SupplyStoreViewController implements Initializable {
+public class SupplyStoreStockViewController implements Initializable {
 
     private ArrayList<Product> productsArrayList;
+
+    private boolean isSupplyStock = false;
+
+    private Purchase purchase;
 
     private ObservableList<SupplyTableItem> supplyTableItems;
 
@@ -61,6 +66,10 @@ public class SupplyStoreViewController implements Initializable {
 
     public void setProductsArrayList(ArrayList<Product> productsArrayList) {
         this.productsArrayList = productsArrayList;
+    }
+
+    public void setSupplyStock(boolean b) {
+        isSupplyStock = b;
     }
 
     @Override
@@ -196,27 +205,37 @@ public class SupplyStoreViewController implements Initializable {
             }
         }
 
-        ArrayList<String> products_not_supplied = new ArrayList<>();
-        for(SupplyTableItem supplyTableItem: supplyTableItems) {
-            int quantity = Integer.parseInt(supplyTableItem.getTextField().getText());
-            if(supplyTableItem.getProduct().getStock() >= quantity) {
-                supplyTableItem.getProduct().setStock(supplyTableItem.getProduct().getStock() - quantity);
-                supplyTableItem.getProduct().setSelves(supplyTableItem.getProduct().getSelves() + quantity);
-            } else {
-                //If the stock is not enough supply it all
-                products_not_supplied.add("ID: " + supplyTableItem.getProduct().getId() + " Name: " + supplyTableItem.getProduct().getName() + " Ποσότητα που εφοδιάστηκε: " + supplyTableItem.getProduct().getStock());
-                supplyTableItem.getProduct().setSelves(supplyTableItem.getProduct().getSelves() + supplyTableItem.getProduct().getStock());
-                supplyTableItem.getProduct().setStock(0);
-            }
-        }
+        if(!isSupplyStock) {
 
-        if(!products_not_supplied.isEmpty()) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setHeaderText("Τα ακόλουθα προϊόντα δεν εφοδιάστηκαν στην ποσότητα που ζητήσατε:" + "\n");
-            for(String product: products_not_supplied) {
-                errorAlert.setHeaderText(errorAlert.getHeaderText() + product + "\n");
+            ArrayList<String> products_not_supplied = new ArrayList<>();
+            for (SupplyTableItem supplyTableItem : supplyTableItems) {
+                int quantity = Integer.parseInt(supplyTableItem.getTextField().getText());
+                if (supplyTableItem.getProduct().getStock() >= quantity) {
+                    supplyTableItem.getProduct().setStock(supplyTableItem.getProduct().getStock() - quantity);
+                    supplyTableItem.getProduct().setSelves(supplyTableItem.getProduct().getSelves() + quantity);
+                } else {
+                    //If the stock is not enough supply it all
+                    products_not_supplied.add("ID: " + supplyTableItem.getProduct().getId() + " Name: " + supplyTableItem.getProduct().getName() + " Ποσότητα που εφοδιάστηκε: " + supplyTableItem.getProduct().getStock());
+                    supplyTableItem.getProduct().setSelves(supplyTableItem.getProduct().getSelves() + supplyTableItem.getProduct().getStock());
+                    supplyTableItem.getProduct().setStock(0);
+                }
             }
-            errorAlert.showAndWait();
+
+            if (!products_not_supplied.isEmpty()) {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setHeaderText("Τα ακόλουθα προϊόντα δεν εφοδιάστηκαν στην ποσότητα που ζητήσατε:" + "\n");
+                for (String product : products_not_supplied) {
+                    errorAlert.setHeaderText(errorAlert.getHeaderText() + product + "\n");
+                }
+                errorAlert.showAndWait();
+            }
+        } else {
+            HashMap<Product, Integer> items = new HashMap<>();
+            for(SupplyTableItem supplyTableItem: supplyTableItems) {
+                items.put(supplyTableItem.getProduct(), Integer.parseInt(supplyTableItem.getTextField().getText()));
+            }
+            purchase = new Purchase(items);
+            Purchase.addPurchase(purchase);
         }
 
         try {
@@ -227,7 +246,8 @@ public class SupplyStoreViewController implements Initializable {
             fileOutputStream.close();
 
             Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
-            infoAlert.setHeaderText("Ο εφοδιασμός Ολοκληρώθηκε");
+            infoAlert.setHeaderText("Ο εφοδιασμός Ολοκληρώθηκε" + (isSupplyStock ? "\nΚόστος: " + purchase.getPurchaseCost() : ""));
+
             infoAlert.showAndWait();
             supplyTableItems.clear();
         }
