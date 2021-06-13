@@ -35,12 +35,12 @@ public class EarningsExpensesViewController implements Initializable {
         double returns = DecimalUtils.round(Return.getTotalCost(), 2);
         double purchases = DecimalUtils.round(Purchase.getTotalCost(), 2);
 
-        ordersLabel.setText(String.valueOf(orders));
-        returnsLabel.setText(String.valueOf(returns));
-        purchasesLabel.setText(String.valueOf(purchases));
-        earningsLabel.setText(String.valueOf(orders));
-        expensesLabel.setText(String.valueOf(DecimalUtils.round(returns + purchases, 2)));
-        profitLabel.setText(String.valueOf(DecimalUtils.round(orders - returns - purchases, 2)));
+        ordersLabel.setText(orders + "€");
+        returnsLabel.setText(returns + "€");
+        purchasesLabel.setText(purchases + "€");
+        earningsLabel.setText(orders + "€");
+        expensesLabel.setText(DecimalUtils.round(returns + purchases, 2) + "€");
+        profitLabel.setText(DecimalUtils.round(orders - returns - purchases, 2) + "€");
 
 
     }

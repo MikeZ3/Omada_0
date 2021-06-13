@@ -172,13 +172,13 @@ public class OrderReturnViewController implements Initializable {
             basketTableItem.getButton().setOnAction(e -> removeFromBasket(basketTableItem));
             basketTableItem.getSpinner().valueProperty().addListener((obs, oldValue, newValue) -> {
                 if(oldValue < newValue) {
-                    totalPriceLabel.setText(String.valueOf(DecimalUtils.round(Double.parseDouble(totalPriceLabel.getText()) + basketTableItem.getPrice(), 2)));
+                    totalPriceLabel.setText(DecimalUtils.round(Double.parseDouble(totalPriceLabel.getText().split("€")[0]) + basketTableItem.getPrice(), 2) + "€");
                 } else {
-                    totalPriceLabel.setText(String.valueOf(DecimalUtils.round(Double.parseDouble(totalPriceLabel.getText()) - basketTableItem.getPrice(), 2)));
+                    totalPriceLabel.setText(DecimalUtils.round(Double.parseDouble(totalPriceLabel.getText().split("€")[0]) - basketTableItem.getPrice(), 2) + "€");
                 }
             });
             basketTableItems.add(basketTableItem);
-            totalPriceLabel.setText(String.valueOf(DecimalUtils.round(basketTableItem.getPrice() + Double.parseDouble(totalPriceLabel.getText()), 2)));
+            totalPriceLabel.setText(DecimalUtils.round(basketTableItem.getPrice() + Double.parseDouble(totalPriceLabel.getText().split("€")[0]), 2) + "€");
         }
     }
 
@@ -187,7 +187,7 @@ public class OrderReturnViewController implements Initializable {
 
         basketTableItems.remove(basketTableItem);
 
-        totalPriceLabel.setText(String.valueOf(DecimalUtils.round(Double.parseDouble(totalPriceLabel.getText()) - basketTableItem.getSpinner().getValue() * basketTableItem.getPrice(), 2)));
+        totalPriceLabel.setText(DecimalUtils.round(Double.parseDouble(totalPriceLabel.getText().split("€")[0]) - basketTableItem.getSpinner().getValue() * basketTableItem.getPrice(), 2) + "€");
     }
 
     public void clearBasket() {

@@ -252,7 +252,7 @@ public class SupplyStoreStockViewController implements Initializable {
             fileOutputStream.close();
 
             Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
-            infoAlert.setHeaderText("Ο εφοδιασμός Ολοκληρώθηκε" + (isSupplyStock ? "\nΚόστος: " + purchase.getPurchaseCost() : ""));
+            infoAlert.setHeaderText("Ο εφοδιασμός Ολοκληρώθηκε" + (isSupplyStock ? "\nΚόστος: " + purchase.getPurchaseCost() + "€" : ""));
 
             infoAlert.showAndWait();
             supplyTableItems.clear();
