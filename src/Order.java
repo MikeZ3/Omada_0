@@ -13,12 +13,13 @@ public class Order {
 		for(Map.Entry<Product, Integer> item: items.entrySet()) {
 			Product product = item.getKey();
 			int quantinty = item.getValue();
-			if(product.getStock() >= quantinty) {
-				product.setStock(product.getStock() - quantinty);
+			if(product.getSelves() >= quantinty) {
+				product.setSelves(product.getSelves() - quantinty);
 				this.id = orders.size() + 1;
 				orders.add(this);
 			} else {
-				System.out.println("Not Enough Stock to get Product " + product.getName());
+				System.out.println("Not Enough In Selves to get Product " + product.getName());
+				System.out.println("Current Selves: " + product.getSelves());
 				System.out.println("Current Stock: " + product.getStock());
 				System.out.println("Order was not made");
 			}

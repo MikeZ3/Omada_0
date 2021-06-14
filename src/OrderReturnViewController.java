@@ -210,13 +210,13 @@ public class OrderReturnViewController implements Initializable {
 
             if(!isReturn) {
                 //Check if there are enough
-                if (basketTableItem.getProduct().getStock() > basketTableItem.getSpinner().getValue()) {
+                if (basketTableItem.getProduct().getSelves() >= basketTableItem.getSpinner().getValue()) {
                     items.put(basketTableItem.getProduct(), basketTableItem.getSpinner().getValue());
                 } else {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("Δεν υπάρχει αρκετή ποσότητα");
                     errorAlert.setContentText("Προϊόν: \n" + basketTableItem.getProduct().getName()
-                            + "\n Συνολική διαθέσιμη ποσότητα: " + basketTableItem.getProduct().getStock() + "\nΗ παραγγελεία δεν ολοκληρώθηκε");
+                            + "\n Συνολική διαθέσιμη ποσότητα στα ράφια: " + basketTableItem.getProduct().getSelves() + "\n Συνολική διαθέσιμη ποσότητα στην αποθήκη: " + basketTableItem.getProduct().getStock() + "\nΗ παραγγελεία δεν ολοκληρώθηκε");
                     errorAlert.showAndWait();
                     return;
                 }
