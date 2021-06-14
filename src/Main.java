@@ -9,6 +9,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -43,7 +44,7 @@ public class Main extends Application {
         ArrayList<Product> products = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
         try {
-            JSONArray jsonArray = (JSONArray) jsonParser.parse(new FileReader("products.json"));
+            JSONArray jsonArray = (JSONArray) jsonParser.parse(new FileReader("products.json", StandardCharsets.UTF_8));
             for (Object o : jsonArray) {
                 JSONObject product = (JSONObject) o;
                 int id = ((Long) product.get("id")).intValue();
