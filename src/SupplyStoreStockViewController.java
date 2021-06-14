@@ -255,7 +255,7 @@ public class SupplyStoreStockViewController implements Initializable {
             infoAlert.setHeaderText("Ο εφοδιασμός Ολοκληρώθηκε" + (isSupplyStock ? "\nΚόστος: " + purchase.getPurchaseCost() + "€" : ""));
 
             infoAlert.showAndWait();
-            supplyTableItems.clear();
+            reload(isSupplyStock);
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -271,7 +271,16 @@ public class SupplyStoreStockViewController implements Initializable {
 
     }
 
+    public void reload(boolean isSupplyStock) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(isSupplyStock ? "SupplyStockView.fxml" : "SupplyStoreView.fxml"));
+        Parent root = fxmlLoader.load();
 
+        Stage primaryStage = (Stage) backButton.getScene().getWindow();
+        primaryStage.getScene().setRoot(root);
+        SupplyStoreStockViewController controller = fxmlLoader.getController();
+        controller.setProductsArrayList(productsArrayList);
+        controller.setSupplyStock(isSupplyStock);
+    }
 
     public void viewMainScene() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
