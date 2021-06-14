@@ -65,7 +65,7 @@ public class CheckOrderViewController implements Initializable {
             // Add products with less than then min_stock to the list
             ObservableList<CheckOrderItem> productObservableList = FXCollections.observableArrayList();
             for(Product product: productsArrayList) {
-                if(product.getStock()<=product.getMin_stock()) {
+                if(product.getStock() <= product.getMin_stock()) {
                     productObservableList.add(new CheckOrderItem(product));
                 }
             }
@@ -100,7 +100,7 @@ public class CheckOrderViewController implements Initializable {
                         return product.getName().toLowerCase().contains(lowerCaseFilter);
                     case "Category":
                         return product.getCategory().toLowerCase().contains(lowerCaseFilter);
-                    case "Stock":
+                    case "Current Stock":
                         return String.valueOf(product.getCurrent_stock()).startsWith(newValue);
                     case "Recommended Stock":
                         return String.valueOf(product.getRecommended_stock()).startsWith(newValue);
