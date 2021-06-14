@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -28,6 +29,11 @@ public class Main extends Application {
             objectOutputStream.writeObject(getProductsFromJSON());
             objectOutputStream.close();
             fileOutputStream.close();
+        }
+
+        file = new File("cart.png");
+        if(file.exists()) {
+            stage.getIcons().add(new Image(new FileInputStream(file)));
         }
 
         Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
