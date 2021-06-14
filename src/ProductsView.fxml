@@ -26,7 +26,7 @@
     <TextField fx:id="searchTextField" layoutX="140.0" layoutY="9.0" prefHeight="25.0" prefWidth="219.0" AnchorPane.topAnchor="9.0" />
     <Label layoutX="92.0" layoutY="12.0" prefHeight="18.0" prefWidth="95.0" text="Search:" AnchorPane.topAnchor="12.0" />
     <Label layoutX="369.0" layoutY="12.0" text="Filter by:" />
-    <ChoiceBox fx:id="choiceBox" layoutX="424.0" layoutY="9.0" prefHeight="25.0" prefWidth="75.0" AnchorPane.topAnchor="9.0">
+    <ChoiceBox fx:id="choiceBox" layoutX="424.0" layoutY="9.0" AnchorPane.topAnchor="9.0">
     </ChoiceBox>
     <Button fx:id="backButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#viewMainScene" text="Go Back" />
 </AnchorPane>

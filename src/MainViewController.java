@@ -49,14 +49,6 @@ public class MainViewController implements Initializable {
             e.printStackTrace();
         }
 
-        int counter = 0;
-        for(Product product: productsArrayList) {
-            if(product.getStock()<=product.getMin_stock()) {
-                counter++;
-                System.out.println(product);
-            }
-        }
-        System.out.println(counter);
 
     }
 
@@ -92,6 +84,7 @@ public class MainViewController implements Initializable {
 
     public void viewCheckOrder() throws IOException {
         CheckOrderViewController controller = (CheckOrderViewController) gotToView(viewCheckOrderButton, "CheckOrderView.fxml");
+        controller.setProductsArrayList(productsArrayList);
     }
 
     public void viewSupplyStock() throws IOException {
