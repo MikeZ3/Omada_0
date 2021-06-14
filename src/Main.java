@@ -54,8 +54,10 @@ public class Main extends Application {
                 String category = (String) product.get("category");
                 int stock = ((Long) product.get("stock")).intValue();
                 int selves = ((Long) product.get("selves")).intValue();
+                int recommended_stock = ((Long) product.get("recommended_stock")).intValue();
+                int min_stock = ((Long) product.get("min_stock")).intValue();
 
-                products.add(new Product(id, name, price_sold, price_bought, category, stock, selves));
+                products.add(new Product(id, name, price_sold, price_bought, category, stock, selves, recommended_stock, min_stock));
             }
         } catch (IOException e) {
             System.out.println("Cannot Find products.json");

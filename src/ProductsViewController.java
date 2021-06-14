@@ -37,6 +37,10 @@ public class ProductsViewController implements Initializable {
     @FXML
     private TableColumn<Integer, Product> selvesColumn;
     @FXML
+    private TableColumn<Integer, Product> recommended_stockColumn;
+    @FXML
+    private TableColumn<Integer, Product> min_stockColumn;
+    @FXML
     private Button backButton;
     @FXML
     private TextField searchTextField;
@@ -62,6 +66,8 @@ public class ProductsViewController implements Initializable {
             categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
             stockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
             selvesColumn.setCellValueFactory(new PropertyValueFactory<>("selves"));
+            recommended_stockColumn.setCellValueFactory(new PropertyValueFactory<>("recommended_stock"));
+            min_stockColumn.setCellValueFactory(new PropertyValueFactory<>("min_stock"));
 
 
             ObservableList<Product> productObservableList = FXCollections.observableArrayList(productsArrayList);
@@ -71,7 +77,7 @@ public class ProductsViewController implements Initializable {
                     System.out.println( tableView.getSelectionModel().getSelectedItem());
                 }});
 
-            choiceBox.getItems().addAll("All", "ID", "Name", "Price Sold", "Price Bought", "Category", "Stock", "Selves");
+            choiceBox.getItems().addAll("All", "ID", "Name", "Price Sold", "Price Bought", "Category", "Stock", "Selves", "Recommended Stock", "Minimum Stock");
             choiceBox.setValue("All");
 
 
@@ -100,10 +106,14 @@ public class ProductsViewController implements Initializable {
                         return String.valueOf(product.getPrice_bought()).startsWith(newValue);
                     case "Category":
                         return product.getCategory().toLowerCase().contains(lowerCaseFilter);
-                    case "Stock" :
+                    case "Stock":
                         return String.valueOf(product.getStock()).startsWith(newValue);
-                    case "Selves" :
+                    case "Selves":
                         return String.valueOf(product.getSelves()).startsWith(newValue);
+                    case "Recommended Stock":
+                        return String.valueOf(product.getRecommended_stock()).startsWith(newValue);
+                    case "Minimum Stock":
+                        return String.valueOf(product.getMin_stock()).startsWith(newValue);
                     default:
                         if (String.valueOf(product.getId()).startsWith(newValue)) return true;
                         else if (product.getName().toLowerCase().contains(lowerCaseFilter)) return true;
@@ -111,6 +121,8 @@ public class ProductsViewController implements Initializable {
                         else if (String.valueOf(product.getPrice_bought()).startsWith(newValue)) return true;
                         else if (String.valueOf(product.getStock()).startsWith(newValue)) return true;
                         else if (String.valueOf(product.getSelves()).startsWith(newValue)) return true;
+                        else if (String.valueOf(product.getRecommended_stock()).startsWith(newValue)) return true;
+                        else if (String.valueOf(product.getMin_stock()).startsWith(newValue)) return true;
                         else return product.getCategory().toLowerCase().contains(lowerCaseFilter);
                 }
 

@@ -25,6 +25,10 @@ public class AddProductViewController {
     private TextField stockTextField;
     @FXML
     private TextField selvesTextField;
+    @FXML
+    private TextField recommended_StockTextField;
+    @FXML
+    private TextField min_StockTextField;
 
     private ArrayList<Product> productsArrayList;
 
@@ -38,7 +42,8 @@ public class AddProductViewController {
 
 
         if(!nameTextField.getText().isEmpty() && !price_SoldTextField.getText().isEmpty() && !price_BoughtTextField.getText().isEmpty()
-        && !categoryTextField.getText().isEmpty() && !stockTextField.getText().isEmpty() && !selvesTextField.getText().isEmpty()) {
+        && !categoryTextField.getText().isEmpty() && !stockTextField.getText().isEmpty() && !selvesTextField.getText().isEmpty()
+        && !recommended_StockTextField.getText().isEmpty() && !min_StockTextField.getText().isEmpty()) {
 
             int id = productsArrayList.get(productsArrayList.size() - 1).getId() + 1;
             String name = nameTextField.getText();
@@ -48,7 +53,9 @@ public class AddProductViewController {
                 double price_bought = Double.parseDouble(price_BoughtTextField.getText());
                 int stock = Integer.parseInt(stockTextField.getText());
                 int selves = Integer.parseInt(selvesTextField.getText());
-                Product product = new Product(id, name, price_sold, price_bought, category, stock, selves);
+                int recommended_stock = Integer.parseInt(recommended_StockTextField.getText());
+                int min_stock = Integer.parseInt(min_StockTextField.getText());
+                Product product = new Product(id, name, price_sold, price_bought, category, stock, selves, recommended_stock, min_stock);
                 productsArrayList.add(product);
 
                 FileOutputStream fileOutputStream = new FileOutputStream("products.ser");
@@ -60,7 +67,7 @@ public class AddProductViewController {
                 System.out.println("Product Successfully Created");
 
                 Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
-                infoAlert.setHeaderText("Το προϊόν προστέθηκε");
+                infoAlert.setHeaderText("Το προϊόν δημιουργήθηκε");
                 infoAlert.showAndWait();
                 nameTextField.setText("");
                 price_SoldTextField.setText("");

@@ -49,6 +49,14 @@ public class MainViewController implements Initializable {
             e.printStackTrace();
         }
 
+        int counter = 0;
+        for(Product product: productsArrayList) {
+            if(product.getStock()<=product.getMin_stock()) {
+                counter++;
+                System.out.println(product);
+            }
+        }
+        System.out.println(counter);
 
     }
 

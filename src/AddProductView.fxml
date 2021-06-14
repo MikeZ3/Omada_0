@@ -37,21 +37,33 @@
          <Font name="Arial" size="30.0" />
       </font>
    </Label>
-   <TextField fx:id="nameTextField" layoutX="220.0" layoutY="75.0" prefHeight="25.0" prefWidth="350.0" />
-   <TextField fx:id="price_SoldTextField" layoutX="220.0" layoutY="127.0" prefHeight="25.0" prefWidth="110.0" />
-   <TextField fx:id="price_BoughtTextField" layoutX="220.0" layoutY="180.0" prefHeight="11.0" prefWidth="85.0" />
-   <TextField fx:id="categoryTextField" layoutX="220.0" layoutY="239.0" prefHeight="25.0" prefWidth="350.0" />
-   <TextField fx:id="stockTextField" layoutX="220.0" layoutY="292.0" prefHeight="11.0" prefWidth="85.0" />
-   <Button contentDisplay="CENTER" layoutY="421.0" mnemonicParsing="false" onAction="#createProduct" prefHeight="100.0" prefWidth="1000.0" text="Δημιουργία" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-      <font>
-         <Font name="Arial" size="30.0" />
-      </font>
-   </Button>
    <Label alignment="CENTER" layoutX="18.0" layoutY="326.0" text="Ράφια">
       <font>
          <Font name="Arial" size="30.0" />
       </font>
    </Label>
+   <Label alignment="CENTER" layoutX="18.0" layoutY="364.0" text="Συνιστώμενη ποσότητα">
+      <font>
+         <Font name="Arial" size="30.0" />
+      </font>
+   </Label>
+   <Label alignment="CENTER" layoutX="18.0" layoutY="404.0" text="Ελάχιστη Ποσότητα">
+      <font>
+         <Font name="Arial" size="30.0" />
+      </font>
+   </Label>
+   <TextField fx:id="nameTextField" layoutX="220.0" layoutY="75.0" prefHeight="25.0" prefWidth="350.0" />
+   <TextField fx:id="price_SoldTextField" layoutX="220.0" layoutY="127.0" prefHeight="25.0" prefWidth="110.0" />
+   <TextField fx:id="price_BoughtTextField" layoutX="220.0" layoutY="180.0" prefHeight="11.0" prefWidth="85.0" />
+   <TextField fx:id="categoryTextField" layoutX="220.0" layoutY="239.0" prefHeight="25.0" prefWidth="350.0" />
+   <TextField fx:id="stockTextField" layoutX="220.0" layoutY="292.0" prefHeight="11.0" prefWidth="85.0" />
    <TextField fx:id="selvesTextField" layoutX="220.0" layoutY="333.0" prefHeight="11.0" prefWidth="85.0" />
-   <Button fx:id="backButton" layoutX="16.0" layoutY="12.0" mnemonicParsing="false" onAction="#viewMainScene" prefHeight="25.0" prefWidth="85.0" text="Επιστροφή" />
+   <TextField fx:id="recommended_StockTextField" layoutX="351.0" layoutY="372.0" prefHeight="11.0" prefWidth="85.0" />
+   <TextField fx:id="min_StockTextField" layoutX="351.0" layoutY="413.0" prefHeight="11.0" prefWidth="85.0" />
+   <Button contentDisplay="CENTER" layoutY="502.0" mnemonicParsing="false" onAction="#createProduct" prefHeight="100.0" prefWidth="1000.0" text="Δημιουργία" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <font>
+         <Font name="Arial" size="30.0" />
+      </font>
+   </Button>
+   <Button fx:id="backButton" layoutX="16.0" layoutY="12.0" mnemonicParsing="false" onAction="#viewMainScene" prefHeight="25.0" text="Go Back" />
 </AnchorPane>

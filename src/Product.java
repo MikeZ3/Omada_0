@@ -9,9 +9,11 @@ public class Product implements Serializable {
     private String category;
     private int stock;
     private int selves;
+    private int recommended_stock;
+    private int min_stock;
 
 
-    public Product(int id, String name, double price_sold, double price_bought, String category, int stock, int selves) {
+    public Product(int id, String name, double price_sold, double price_bought, String category, int stock, int selves, int recommended_stock, int min_stock) {
         this.id = id;
         this.name = name;
         this.price_sold = DecimalUtils.round(price_sold,2);
@@ -19,6 +21,8 @@ public class Product implements Serializable {
         this.category = category;
         this.stock = stock;
         this.selves = selves;
+        this.recommended_stock = recommended_stock;
+        this.min_stock = min_stock;
     }
 
     @Override
@@ -80,6 +84,22 @@ public class Product implements Serializable {
 
     public void setSelves(int selves) {
         this.selves = selves;
+    }
+
+    public int getRecommended_stock() {
+        return recommended_stock;
+    }
+
+    public void setRecommended_stock(int recommended_stock) {
+        this.recommended_stock = recommended_stock;
+    }
+
+    public int getMin_stock() {
+        return min_stock;
+    }
+
+    public void setMin_stock(int min_stock) {
+        this.min_stock = min_stock;
     }
 }
 
